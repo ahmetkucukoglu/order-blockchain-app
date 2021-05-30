@@ -1,7 +1,10 @@
 const Orders = artifacts.require("Orders");
 const MockedOrders = artifacts.require("MockedOrders");
 
-module.exports = function (deployer) {
+module.exports = function (deployer, network, accounts) {
   deployer.deploy(Orders);
-  deployer.deploy(MockedOrders);
+
+  if (network == 'development') {
+    deployer.deploy(MockedOrders);
+  }
 };
